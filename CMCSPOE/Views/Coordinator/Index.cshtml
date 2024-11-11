@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CMCSPOE.Models.ClaimViewModel>
+
+<h2>Claims Overview</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>Lecturer</th>
+            <th>Hourly Rate</th>
+            <th>Hours Worked</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.Id</td>
+                <td>@claim.LectureName</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.Status</td>
+                <td>
+                    <form asp-action="UpdateStatus" method="post">
+                        <input type="hidden" name="claimId" value="@claim.Id" />
+                        <select name="status" class="form-control">
+                            <option value="Pending">Pending</option>
+                            <option value="Approved">Approved</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                        <button type="submit" class="btn btn-primary">Update Status</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

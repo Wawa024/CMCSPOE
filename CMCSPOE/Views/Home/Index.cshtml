@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h2>Welcome to the Contract Monthly Claim System</h2>
+    <p>Please choose an option below to get started:</p>
+    <div class="mt-4">
+        <a class="btn btn-primary btn-lg" asp-controller="SignUp" asp-action="SignUp">Register</a>
+        <a class="btn btn-secondary btn-lg" asp-controller="SignIn" asp-action="Login">Login</a>
+        <a class="btn btn-success btn-lg" asp-controller="Claims" asp-action="SubmitClaim">Submit a Claim</a>
+    </div>
+</div>

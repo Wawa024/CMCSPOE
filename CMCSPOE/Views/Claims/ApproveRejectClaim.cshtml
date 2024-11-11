@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CMCSPOE.Models.ClaimModel>
+@{
+    ViewData["Title"] = "Pending Claims";
+}
+<h1>Pending Claims</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lecturer ID</th>
+            <th>Hours Worked</th>
+            <th>Hourly Rate</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.LecturerId</td>
+                <td>@claim.HoursWorked</td>
+                <td>@claim.HourlyRate</td>
+                <td>@claim.Description</td>
+                <td>
+                    <form asp-action="ApproveClaim" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@claim.Id" />
+                        <button type="submit" class="btn btn-success">Approve</button>
+                    </form>
+                    <form asp-action="RejectClaim" method="post" style="display:inline;">
+                        <input type="hidden" name="id" value="@claim.Id" />
+                        <button type="submit" class="btn btn-danger">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" asp-controller="Claims">Back to Claims</a>
+</div>
+
